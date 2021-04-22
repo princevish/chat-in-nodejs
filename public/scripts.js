@@ -11,6 +11,7 @@ $('#buttons').click(() => {
   $('#massageboxf').append($('<p>').text($('#inputfield').val().trim()).attr('class', 'text-right bg-success msg mb-2'))
 
   $('#inputfield').val(" ")
+  scrollToBottom()
 })
 
 socket.on('msg_rcvd', (data) => {
@@ -18,4 +19,9 @@ socket.on('msg_rcvd', (data) => {
   var username = `${data.users}`
   $('#massageboxf').append($('<p>').text(username).attr('class', 'username'))
   $('#massageboxf').append($('<p>').text(massage).attr('class', 'text-left bg-primary msg mb-2'))
+  scrollToBottom()
 })
+
+function scrollToBottom(){
+  massageboxf.scrollTop=massageboxf.scrollHeight
+}
