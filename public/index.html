@@ -1,47 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>
-        
-    </title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css">
-    <script src="/socket.io/socket.io.js"></script>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div class="page-content page-container" id="page-content">
-        <div class="padding">
-            <div class="row container d-flex justify-content-center">
-                <div class="col-md-4">
-                    <div class="box box-warning direct-chat direct-chat-warning">
-                        <div class="box-header with-border">
-                            <h3 class="box-title">Chat Messages</h3>
-                            <div class="box-tools pull-right"> <span data-toggle="tooltip" title="" class="badge bg-yellow" data-original-title="3 New Messages">20</span> <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i> </button> <button type="button" class="btn btn-box-tool" data-toggle="tooltip" title="" data-widget="chat-pane-toggle" data-original-title="Contacts"> <i class="fa fa-comments"></i></button> <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i> </button> </div>
-                        </div>
-                        <div class="box-body">
-                            <div class="direct-chat-messages">
-                                
-                                <ul id="ulMsgs"></ul>
-                                
-                                
-                            </div>
-                        </div>
-                        <div class="box-footer">
-                            
-                                <div class="input-group"> <input type="text" name="message" placeholder="Type Message ..." class="form-control" id="inputfield"> <span class="input-group-btn">
-                                     <button type="button" class="btn btn-warning btn-flat" id="buttonsend">Send</button> </span> </div>
-                            
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title> </title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+      integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+      crossorigin="anonymous"
+    />
 
-    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="card">
+        <h5 class="card-header text-center bg-primary">Free chat</h5>
+        <div class="card-body">
+          <div id="massageboxf"></div>
+
+          <div class="input-group mt-2">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Enter your maassage"
+              aria-label="Username"
+              aria-describedby="basic-addon1"
+              id="inputfield"
+            />
+            <button class="btn btn-primary" type="button" id="buttons">
+              Send
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="/socket.io/socket.io.js"></script>
     <script src="scripts.js"></script>
-</body>
+  </body>
 </html>

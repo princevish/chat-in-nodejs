@@ -1,17 +1,21 @@
 let socket = io()
-$('#buttonsend').click(() => {
-    socket.emit('msg_send', {
-      
-      msg: $('#inputfield').val()
-    })
-  
-   $('#ulMsgs').append($('<li>').text(`Me :`+ $('#inputfield').val() ))
-    
-    $('#inputfield').val(" ")
+do {
+  var user = prompt("Enter username")
+} while (!user)
+$('#buttons').click(() => {
+  socket.emit('msg_send', {
+    users: user,
+    msg: $('#inputfield').val().trim()
   })
-  
-  socket.on('msg_rcvd', (data) => {
-    $('#ulMsgs').append($('<li>').text(
-      `${data.msg}`
-    ))
-  })
+
+  $('#massageboxf').append($('<p>').text($('#inputfield').val().trim()).attr('class', 'text-right bg-success massr mb-2'))
+
+  $('#inputfield').val(" ")
+})
+
+socket.on('msg_rcvd', (data) => {
+  var massage = `${data.msg}`
+  var username = `${data.users}`
+  $('#massageboxf').append($('<p>').text(username).attr('class', 'recivemg'))
+  $('#massageboxf').append($('<p>').text(massage).attr('class', 'text-left bg-primary massr mb-2'))
+})
