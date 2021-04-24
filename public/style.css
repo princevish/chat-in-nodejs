@@ -51,3 +51,8 @@
   border-radius: 10px;
   color: cornsilk;
  }
+ .b{
+  position: fixed;
+  margin-right: 15px;
+  bottom: 0;
+ }
