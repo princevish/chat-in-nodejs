@@ -2,7 +2,7 @@ let socket = io()
 do {
   var user = prompt("Enter username")
 } while (!user)
-$('#buttons').click(() => {
+function addmassage(){
   socket.emit('msg_send', {
     users: user,
     msg: $('#inputfield').val().trim()
@@ -12,6 +12,9 @@ $('#buttons').click(() => {
 
   $('#inputfield').val(" ")
   scrollToBottom()
+}
+$('#buttons').click(() => {
+  addmassage()
 })
 
 socket.on('msg_rcvd', (data) => {
@@ -25,3 +28,10 @@ socket.on('msg_rcvd', (data) => {
 function scrollToBottom(){
   massageboxf.scrollTop=massageboxf.scrollHeight
 }
+$('#inputfield').keypress(function (e) {
+  var key = e.which;
+  if(key == 13)  // the enter key code
+   {
+    addmassage()
+   }
+ });   
