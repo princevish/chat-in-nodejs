@@ -12,7 +12,8 @@
   display: flex;
   flex-direction: column;
   overflow-y: auto;
-  height: 85vh;
+  height: 80vh;
+  margin-bottom: 15%;
 }
 .username {
   margin-bottom: 0px;
