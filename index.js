@@ -2,7 +2,7 @@ const express = require('express');
 const socketio = require('socket.io')
 const http = require('http')
 const port = process.env.PORT || 3000;
-const ip = process.env.IP || 0.0.0.0;
+
 const app = express();
 
 const server = http.createServer(app)
@@ -18,7 +18,7 @@ io.on('connection', (socket) => {
 })
 
 app.use('/', express.static(__dirname + '/public'))
-server.listen(port,ip, function (error) {
+server.listen(port, function (error) {
     if (error) {
         console.log("error in running the server", error);
     } else {
