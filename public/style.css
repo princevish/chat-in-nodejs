@@ -7,7 +7,15 @@
   padding-right: 5px;
   padding-left: 5px;
 }
-
+#nav{
+  display: flex;
+  flex-direction: row;
+  background-color: #007bff!important;
+}
+#chatdiv{
+  display: flex;
+  justify-content: flex-end;
+}
 #massageboxf {
   display: flex;
   flex-direction: column;
@@ -27,7 +35,7 @@
  display: flex;
   padding: 2px;
   justify-content:start-end;
-  
+  flex-wrap: wrap;
   margin-bottom: 2px;
  
   
@@ -36,7 +44,7 @@
   display: flex;
   justify-content:flex-end;
   padding: 2px;
-
+  flex-wrap: wrap;
   margin-bottom: 2px;
   
 }
@@ -52,6 +60,8 @@
   border-radius: 10px;
   color: cornsilk;
  }
+
+
  @media (max-height: 400px) {
   #massageboxf {
     display: flex;
