@@ -1,8 +1,6 @@
 const express = require('express');
-const handlebars = require('handlebars')
 const socketio = require('socket.io');
 const http = require('http');
-const path = require("path");
 const port = process.env.PORT || 8080;
 const ip = process.env.IP || '0.0.0.0';
 const app = express();
