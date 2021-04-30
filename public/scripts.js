@@ -30,10 +30,12 @@ socket.emit('adduser', user)
 
 
 $('#chatonline').change(function () {
+ 
   var $option = $(this).find('option:selected');
   var value = $option.val();
   var text = $option.text();
   to = value
+  $('#massageboxf').append($('<div>').attr('class', 'text-center text-primary').text(`--------- ${text} ---------`))
 });
 
 
@@ -46,9 +48,9 @@ function addmassage(to) {
   })
 
   $('#massageboxf').append($('<div>').attr('id', 'mass-right').append($('<spam>').text($('#inputfield').val().trim())))
-
-  $('#inputfield').val(" ")
   scrollToBottom()
+  $('#inputfield').val(" ")
+
 }
 $('#buttons').click(() => {
 
