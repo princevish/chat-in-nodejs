@@ -1,7 +1,7 @@
 
-# simple chating demo in nodejs 
-## npm init
-## npm i express
-## npm i socket.io
-## npm start
+## simple chating App in node.js using Socket.io without database
+```
+git init
+npm start
 
+```
