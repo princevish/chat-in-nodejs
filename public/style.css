@@ -3,16 +3,16 @@
   padding: 0;
   box-sizing: border-box;
 }
-.container-fluid{
+.container-fluid {
   padding-right: 5px;
   padding-left: 5px;
 }
-#nav{
+#nav {
   display: flex;
   flex-direction: row;
-  background-color: #007bff!important;
+  background-color: #007bff !important;
 }
-#chatdiv{
+#chatdiv {
   display: flex;
   justify-content: flex-end;
 }
@@ -21,7 +21,6 @@
   flex-direction: column;
   overflow-y: auto;
   height: 80vh;
-  
 }
 .username {
   margin-bottom: 0px;
@@ -32,42 +31,71 @@
 }
 
 #mass-left {
- display: flex;
+  display: flex;
   padding: 2px;
-  justify-content:start-end;
+  justify-content: start-end;
   flex-wrap: wrap;
   margin-bottom: 2px;
- 
-  
 }
 #mass-right {
   display: flex;
-  justify-content:flex-end;
+  justify-content: flex-end;
   padding: 2px;
   flex-wrap: wrap;
   margin-bottom: 2px;
-  
 }
-#mass-right spam{
- background-color: #2db34ce0;
- padding: 5px;
- border-radius: 10px;
- color: cornsilk;
-}
-#mass-left spam{
-  background-color: #007bff!important;
+#mass-right spam {
+  background-color: #2db34ce0;
   padding: 5px;
   border-radius: 10px;
   color: cornsilk;
- }
+}
+#mass-left spam {
+  background-color: #007bff !important;
+  padding: 5px;
+  border-radius: 10px;
+  color: cornsilk;
+}
 
-
- @media (max-height: 400px) {
+@media (max-height: 400px) {
   #massageboxf {
     display: flex;
     flex-direction: column;
     overflow-y: auto;
     height: 70vh;
-    
   }
+}
+
+.file {
+  position: relative;
+  overflow: hidden;
+  margin: 0 10px 0 10px;
+}
+
+.file input {
+  position: absolute;
+  font-size: 50px;
+  opacity: 0;
+  right: 0;
+  top: 0;
+}
+
+#imageDivRight {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+#imageDivLeft {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+#image {
+  width: 50%;
+  max-width: 300px;
+  height: auto;
+  object-fit: cover;
+  margin:20px;
 }

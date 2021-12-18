@@ -26,10 +26,15 @@
       </div>
 
       <div id="massageboxf"></div>
-
+     
       <div class="input-group">
         <input type="text" class="form-control" placeholder="Enter your massage" aria-label="Username"
           aria-describedby="basic-addon1" id="inputfield" />
+          <div class="file btn btn-lg btn-primary">
+							Upload
+						      <input type="file" accept="image/*" onchange="onSelectFile(event)">
+						</div>
+ 
         <button class="btn btn-primary mr-2" type="button" id="buttons">
           Send
         </button>
