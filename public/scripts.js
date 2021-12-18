@@ -2,7 +2,6 @@ let socket = io();
 let list = new Set();
 let a = 0;
 var to;
-let file;
 
 let imagefile = document.getElementById("imagefile");
 
@@ -92,26 +91,48 @@ onlineuser();
 
 function ImageShow(filedata, position) {
   var file = new Blob([filedata], { type: filedata.type });
-  var img = document.createElement("img");
-  img.alt = filedata.name;
-  img.id = "image";
+  console.log(file);
   const render = new FileReader();
   render.readAsDataURL(file);
-  render.onloadend = function () {
-    img.src = render.result;
-  };
-  if (position) {
-    $("#massageboxf").append(
-      $("<div>").attr("id", "imageDivRight").append(img)
-    );
+  if (filedata.type === "video/mp4") {
+    var video = document.createElement('video');
+    video.autoplay = false;
+    video.controls = true;
+    video.id = "video";
+    render.onloadend = function () {
+      video.src = render.result;
+    };
+    if (position) {
+      $("#massageboxf").append(
+        $("<div>").attr("id", "imageDivRight").append(video)
+      );
+    } else {
+      $("#massageboxf").append(
+        $("<div>").attr("id", "imageDivLeft").append(video)
+      );
+    }
   } else {
-    $("#massageboxf").append($("<div>").attr("id", "imageDivLeft").append(img));
+    var img = document.createElement("img");
+    img.alt = filedata.name;
+    img.id = "image";
+
+    render.onloadend = function () {
+      img.src = render.result;
+    };
+    if (position) {
+      $("#massageboxf").append(
+        $("<div>").attr("id", "imageDivRight").append(img)
+      );
+    } else {
+      $("#massageboxf").append(
+        $("<div>").attr("id", "imageDivLeft").append(img)
+      );
+    }
   }
 }
 
 function onSelectFile({ target: { files } }) {
   ImageShow(files[0], true);
-  file = files[0];
   socket.emit("msg_send", {
     to: to,
     users: user,
