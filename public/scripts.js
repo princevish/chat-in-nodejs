@@ -2,8 +2,10 @@ let socket = io();
 let list = new Set();
 let a = 0;
 var to;
+let file;
 
 let imagefile = document.getElementById("imagefile");
+
 function onlineuser() {
   socket.on("online", (data) => {
     $("option").remove();
@@ -39,13 +41,6 @@ $("#chatonline").change(function () {
 });
 
 function addmassage(to) {
-  if (file) {
-    socket.emit("msg_send", {
-      to: to,
-      users: user,
-      file: file,
-    });
-  }
   socket.emit("msg_send", {
     to: to,
     users: user,
@@ -59,16 +54,19 @@ function addmassage(to) {
   );
   scrollToBottom();
   $("#inputfield").val(" ");
-  file = "";
 }
+
 $("#buttons").click(() => {
-  addmassage(to);
+  if ($("#inputfield").val().trim()) {
+    addmassage(to);
+  }
 });
 
 socket.on("msg_rcvd", (data) => {
   var massage = `${data.msg}`;
   var username = `${data.users}`;
   if (data.file) {
+    $("#massageboxf").append($("<p>").text(username).attr("class", "username"));
     ImageShow(data.file, false);
   } else {
     $("#massageboxf").append($("<p>").text(username).attr("class", "username"));
@@ -113,9 +111,11 @@ function ImageShow(filedata, position) {
 
 function onSelectFile({ target: { files } }) {
   ImageShow(files[0], true);
+  file = files[0];
   socket.emit("msg_send", {
     to: to,
     users: user,
-    file: new Blob([files[0]], { type: files[0].type }),
+    file: files[0],
   });
+  $("#File1").val("");
 }
