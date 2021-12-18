@@ -91,11 +91,10 @@ onlineuser();
 
 function ImageShow(filedata, position) {
   var file = new Blob([filedata], { type: filedata.type });
-  console.log(file);
   const render = new FileReader();
   render.readAsDataURL(file);
   if (filedata.type === "video/mp4") {
-    var video = document.createElement('video');
+    var video = document.createElement("video");
     video.autoplay = false;
     video.controls = true;
     video.id = "video";
