@@ -24,6 +24,7 @@ io.on("connection", (socket) => {
   }
   socket.on("adduser", (data) => {
     chatroom(socket, data);
+    socket.emit("online", users);
   });
   socket.on("msg_send", (data) => {
     if (data.to) {
