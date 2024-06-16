@@ -1,31 +1,32 @@
 let socket = io();
 let list = new Set();
 let a = 0;
-var to;
+let to;
+let user;
 
 let imagefile = document.getElementById("imagefile");
 
-function onlineuser() {
-  socket.on("online", (data) => {
-    $("option").remove();
-    $("#chatonline").append(new Option("All User", ""));
-    for (let x in data) {
-      let id = data[x].id;
-      let user = data[x].user;
-      list.add(id);
 
-      if (list.has(`${id}`)) {
-        $("#chatonline").append(new Option(user, id));
-      }
+socket.on("online", (data) => {
+  $("option").remove();
+  $("#chatonline").append(new Option("All User", ""));
+  for (let x in data) {
+    let id = data[x].id;
+    let user = data[x].user;
+    list.add(id);
+
+    if (list.has(`${id}`)) {
+      $("#chatonline").append(new Option(user, id));
     }
-  });
-}
+  }
+});
+
 
 do {
-  var user = prompt("Enter username");
+  user = prompt("Enter username");
+  socket.emit("adduser", user);
 } while (!user);
 
-socket.emit("adduser", user);
 
 $("#chatonline").change(function () {
   var $option = $(this).find("option:selected");
@@ -39,9 +40,9 @@ $("#chatonline").change(function () {
   );
 });
 
-function addmassage(to) {
+function addmassage() {
   socket.emit("msg_send", {
-    to: to,
+    to,
     users: user,
     msg: $("#inputfield").val().trim(),
   });
@@ -87,8 +88,6 @@ $("#inputfield").keypress(function (e) {
   }
 });
 
-onlineuser();
-
 function ImageShow(filedata, position) {
   var file = new Blob([filedata], { type: filedata.type });
   const render = new FileReader();
@@ -115,19 +114,23 @@ function ImageShow(filedata, position) {
     img.alt = filedata.name;
     img.id = "image";
 
+
     render.onloadend = function () {
       img.src = render.result;
-    };
-    if (position) {
-      $("#massageboxf").append(
-        $("<div>").attr("id", "imageDivRight").append(img)
-      );
-    } else {
-      $("#massageboxf").append(
-        $("<div>").attr("id", "imageDivLeft").append(img)
-      );
+      if (position) {
+        $("#massageboxf").append(
+          $("<div>").attr("id", "imageDivRight").append(
+            $("<a>").attr("href", URL.createObjectURL(file)).attr('target', '_blank').attr('class', 'image-link').append(img)
+          ))
+      } else {
+        $("#massageboxf").append(
+          $("<div>").attr("id", "imageDivLeft").append(
+            $("<a>").attr("href", render.result).attr('target', '_blank').attr('class', 'image-link').attr('download', 'image.jpg').append(img)
+          ))
+      }
     }
-  }
+  };
+
 }
 
 function onSelectFile({ target: { files } }) {

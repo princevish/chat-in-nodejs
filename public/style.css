@@ -3,25 +3,30 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 .container-fluid {
   padding-right: 5px;
   padding-left: 5px;
 }
+
 #nav {
   display: flex;
   flex-direction: row;
   background-color: #007bff !important;
 }
+
 #chatdiv {
   display: flex;
   justify-content: flex-end;
 }
+
 #massageboxf {
   display: flex;
   flex-direction: column;
   overflow-y: auto;
   height: 80vh;
 }
+
 .username {
   margin-bottom: 0px;
   font-size: 12px;
@@ -37,6 +42,7 @@
   flex-wrap: wrap;
   margin-bottom: 2px;
 }
+
 #mass-right {
   display: flex;
   justify-content: flex-end;
@@ -44,12 +50,14 @@
   flex-wrap: wrap;
   margin-bottom: 2px;
 }
+
 #mass-right spam {
   background-color: #2db34ce0;
   padding: 5px;
   border-radius: 10px;
   color: cornsilk;
 }
+
 #mass-left spam {
   background-color: #007bff !important;
   padding: 5px;
@@ -94,12 +102,18 @@
   margin: 20px;
 }
 
-#image {
+.image-link {
+  display: block;
   width: 50%;
-  max-width: 300px;
-  height: auto;
+  aspect-ratio: 3/2;
+  overflow: hidden;
+}
+
+#image {
+  width: 100%;
   object-fit: cover;
 }
+
 #video {
   width: 100%;
   max-width: 300px;
